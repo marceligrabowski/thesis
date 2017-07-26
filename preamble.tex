@@ -1,0 +1,56 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[english, polish]{babel}
+\usepackage{polski}
+\frenchspacing
+\usepackage{indentfirst}
+\usepackage{xltxtra}
+\usepackage{titlesec}
+\usepackage[margin=25mm]{geometry}
+\usepackage{nameref}
+\usepackage[pdfauthor={Marceli Grabowski}, pdftitle={Wieloplatformowa aplikacja mobilna do zakupu biletów kinowych w technologii Xamarin}]{hyperref}
+\usepackage[nottoc,notlot,notlof]{tocbibind}
+\usepackage{todonotes}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage{float}
+\usepackage{pdfpages}
+\usepackage{underscore}
+\graphicspath{ {img/} }
+\newcommand\todoin[2][]{\todo[inline, caption={2do}, #1]{
+\begin{minipage}{\textwidth-4pt}#2\end{minipage}}}
+\linespread{1}
+\titleformat*{\section}{\fontsize{14pt}{2}\bfseries}
+\titleformat*{\subsection}{\fontsize{13pt}{2}\bfseries}
+\titleformat*{\subsubsection}{\fontsize{13pt}{2}\bfseries}
+
+\renewenvironment{abstract}{
+ \vspace*{3cm}
+ \begin{center}%
+    \bfseries\abstractname
+  \end{center}}%
+  {\vfill}
+
+\author{Marceli Grabowski}
+\title{Wieloplatformowa aplikacja mobilna do zakupu biletów kinowych w technologii Xamarin}
+
+\begin{document}
+
+\includepdf[pages={1}]{titlepage.pdf}
+\tableofcontents{}
+
+\clearpage
+\addcontentsline{toc}{chapter}{Streszczenie}
+\abstract{Streszczenie}
+\selectlanguage{english}
+\abstract{Abstract}
+\selectlanguage{polish}
+\clearpage
+
+\begin{flushright}
+\vspace*{\fill}
+\textit{Tu walnij sobie dedykację}
+\end{flushright}
+
+\pagebreak
