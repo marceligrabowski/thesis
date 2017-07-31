@@ -13,13 +13,48 @@
 \section{Microsoft Azure}
 \chapter{Założenia projektowe}
 \section{Przedmiot pracy}
-Przedmiotem pracy jest utworzenie aplikacji mobilnej na platformy Android oraz iOS, umożliwiajacej rezerwację i zakup biletów kinowych w ramach sieci kin, wraz z towarzyszącą aplikacją serwerową. Aplikacja kliencka będzie utworzona w oparciu o platformę Xamarin, natomiast aplikacja serwerowa w oparciu o framework ASP.NET Core
+Przedmiotem pracy jest utworzenie aplikacji mobilnej na platformy Android oraz iOS, umożliwiającej rezerwację i zakup biletów kinowych w ramach sieci kin, wraz z towarzyszącą aplikacją serwerową. Aplikacja kliencka będzie utworzona w oparciu o platformę Xamarin, natomiast aplikacja serwerowa w oparciu o framework ASP.NET Core
 \section{Wymagania funkcjonalne}
-Oprogramowanie powinno spełniać następujące wymagania funkcjonalne:
+System powinien spełniać następujące wymagania funkcjonalne. Przy definiowaniu wymagań przyjęto następujących aktorów - Klient, Pracownik kina, Administrator systemu, System
 \begin{enumerate}
-\item Item
+\item Klient ma możliwość stworzenia konta użytkownika na podstawie adresu e-mail, w celu zachowania preferencji użytkownika pomiędzy urządzeniami.
+\item Klient ma możliwość stworzenia konta użytkownika z wykorzystaniem konta w jednym ze wspieranych portali społecznościowych, w celu przyspieszenia procesu tworzenia konta.
+\item Klient ma możliwość modyfikacji informacji o koncie użytkownika.
+\item Klient ma możliwość zresetowania hasła do konta użytkownika, w celu odzyskania dostępu do konta. \newline
+\item Klient ma możliwość wyboru domyślnego kina, w celu łatwiejszego dostępu do aktualnego repertuaru.
+\item Klient ma możliwość przeglądania aktualnego repertuaru w danym kinie.
+\item Klient ma możliwość przeglądania podstawowych informacji o filmie z repertuaru \newline
+\item Klient ma możliwość złożenia rezerwacji biletu(ów) na wybrany seans w wybranym kinie.
+\item Klient ma możliwość modyfikacji wybranej rezerwacji do 30 minut przed planowanym początkiem seansu.
+\item System anuluje wszystkie niepotwierdzone rezerwacje 30 minut przed planowanym początkiem seansu. \newline
+\item Klient ma możliwość zakupu biletu(ów) na wybrany seans w wybranym kinie.
+\item Klient ma możliwość dokonania zapłaty za zakupione bilety za pośrednictwem zewnętrznego systemu płatności elektronicznych.
+\item Klient ma możliwość zwrotu zakupionych biletów do 3 godzin przed planowanym seansem.
+\item Klient ma możliwość wyboru miejsc na podstawie widoku sali kinowej.
+\item Klient ma możliwość wyboru rodzaju biletu przy wyborze miejsc.
+\item Klient ma możliwość przeglądania historii rezerwacji oraz zakupionych biletów \newline
+\item Pracownik kina ma możliwość modyfikacji podstawowych danych o kinie.
+\item Pracownik kina ma możliwość modyfikacji informacji o salach dostępnych w kinie.
+\item Pracownik kina ma możliwość modyfikacji repertuaru kina.
+\item Pracownik kina ma możliwość potwierdzenia rezerwacji klienta.
+\item Pracownik kina ma możliwość anulowania rezerwacji klienta.
+\item Pracownik kina ma możliwość dokonania sprzedaży biletów klientom w kasie biletowej.
+\item Administrator systemu ma możliwość dodawania, modyfikowania i usuwania informacji o kinach należących do sieci kin.
+\item Administrator systemu ma możliwość tworzenia oraz modyfikacji kont użytkowników oraz przydzielania im ról.
 \end{enumerate}
 \section{Wymagania niefunkcjonalne}
+Zbiór tych wymagań definiuje, jakie wymagania na system mają zostać spełnione, oprócz wymagań funkcjonalnych. Wymagania te głównie dotyczą wydajności, bezpieczeństwa i tym podobnych aspektów.
+\begin{enumerate}
+\item System powinien być dostępny w każdy dzień tygodnia, całą dobę.
+\item System jest w stanie obsługiwać wiele jednocześnie podłączonych urządzeń.
+\item Do poprawnego korzystania ze wszystkich funkcji oferowanych przez aplikację, wymagane jest stałe połączenie internetowe.
+\item W celu zapewnienia odpowiedniego poziomu bezpieczeństwa, połączenie między serwerem i klientem ma być szyfrowane.
+\item System ma wspierać również mechanizm sesji, jako dodatkowy mechanizm zabezpieczający połączenie.
+\item Aplikacja kliencka powinna być dostępna na systemach Android (w wersji 4.4 i wyższej) oraz iOS (w wersji 8.0 i wyższej).
+\item Aplikacja kliencka powinna zostać uruchomiona na urządzeniu mobilnym niezależnie od stanu połączenia internetowego.
+\item Aplikacja serwerowa powinna móc być uruchomiona na serwerach z systemami rodziny Windows Server (wersja 2012 R2 i wyżej) oraz Linux
+
+\end{enumerate}
 \section{Opis podstawowej architektury systemu}
 \chapter{Projekt aplikacji}
 \section{Przypadki użycia}
