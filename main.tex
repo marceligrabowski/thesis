@@ -13,13 +13,25 @@
 \section{Microsoft Azure}
 \chapter{Założenia projektowe}
 \section{Przedmiot pracy}
-Przedmiotem pracy jest utworzenie aplikacji mobilnej na platformy Android oraz iOS, umożliwiajacej rezerwację i zakup biletów kinowych w ramach sieci kin, wraz z towarzyszącą aplikacją serwerową. Aplikacja kliencka będzie utworzona w oparciu o platformę Xamarin, natomiast aplikacja serwerowa w oparciu o framework ASP.NET Core
+Przedmiotem pracy jest utworzenie aplikacji mobilnej na platformy Android oraz iOS, umożliwiającej rezerwację i zakup biletów kinowych w ramach sieci kin, wraz z towarzyszącą aplikacją serwerową. Aplikacja kliencka będzie utworzona w oparciu o platformę Xamarin, natomiast aplikacja serwerowa w oparciu o framework ASP.NET Core
 \section{Wymagania funkcjonalne}
 Oprogramowanie powinno spełniać następujące wymagania funkcjonalne:
 \begin{enumerate}
 \item Item
 \end{enumerate}
 \section{Wymagania niefunkcjonalne}
+Zbiór tych wymagań definiuje, jakie wymagania na system mają zostać spełnione, oprócz wymagań funkcjonalnych. Wymagania te głównie dotyczą wydajności, bezpieczeństwa i tym podobnych aspektów.
+\begin{enumerate}
+\item System powinien być dostępny w każdy dzień tygodnia, całą dobę.
+\item System jest w stanie obsługiwać wiele jednocześnie podłączonych urządzeń.
+\item Do poprawnego korzystania ze wszystkich funkcji oferowanych przez aplikację, wymagane jest stałe połączenie internetowe.
+\item W celu zapewnienia odpowiedniego poziomu bezpieczeństwa, połączenie między serwerem i klientem ma być szyfrowane.
+\item System ma wspierać również mechanizm sesji, jako dodatkowy mechanizm zabezpieczający połączenie.
+\item Aplikacja kliencka powinna być dostępna na systemach Android (w wersji 4.4 i wyższej) oraz iOS (w wersji 8.0 i wyższej).
+\item Aplikacja kliencka powinna zostać uruchomiona na urządzeniu mobilnym niezależnie od stanu połączenia internetowego.
+\item Aplikacja serwerowa powinna móc być uruchomiona na serwerach z systemami rodziny Windows Server (wersja 2012 R2 i wyżej) oraz Linux
+
+\end{enumerate}
 \section{Opis podstawowej architektury systemu}
 \chapter{Projekt aplikacji}
 \section{Przypadki użycia}
