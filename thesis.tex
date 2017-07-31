@@ -5,6 +5,7 @@
 \usepackage{indentfirst}
 \usepackage{xltxtra}
 \usepackage{titlesec}
+\usepackage{listings}
 \usepackage[margin=25mm]{geometry}
 \usepackage{nameref}
 \usepackage[pdfauthor={Marceli Grabowski}, pdftitle={Wieloplatformowa aplikacja mobilna do zakupu biletów kinowych w technologii Xamarin}]{hyperref}
@@ -17,6 +18,9 @@
 \usepackage{float}
 \usepackage{pdfpages}
 \usepackage{underscore}
+\usepackage{scrhack}
+\usepackage{tocbasic}
+\setuptoc{lol}{leveldown}
 \graphicspath{ {img/} }
 \newcommand\todoin[2][]{\todo[inline, caption={2do}, #1]{
 \begin{minipage}{\textwidth-4pt}#2\end{minipage}}}
@@ -25,6 +29,20 @@
 \titleformat*{\subsection}{\fontsize{13pt}{2}\bfseries}
 \titleformat*{\subsubsection}{\fontsize{13pt}{2}\bfseries}
 
+\makeatletter
+\renewcommand\listoftables{%
+    \@mkboth{\MakeUppercase\listtablename}%
+        {\MakeUppercase\listtablename}%
+    \@starttoc{lot}%
+}
+\renewcommand\listoffigures{%
+    \@mkboth{\MakeUppercase\listfigurename}%
+        {\MakeUppercase\listfigurename}%
+    \@starttoc{lof}%
+}
+\renewcommand\lstlistlistingname{Spis listingów}
+
+\makeatother
 \renewenvironment{abstract}{
  \vspace*{3cm}
  \begin{center}%
@@ -40,4 +58,6 @@
 \include{introduction}
 
 \include{main}
+
+
 \end{document}

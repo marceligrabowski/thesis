@@ -1,4 +1,5 @@
 \chapter*{Wstęp}
+\addcontentsline{toc}{chapter}{Wstęp}
 \chapter{Wprowadzenie do problematyki}
 \chapter{Technologie i narzędzia wykorzystywane w pracy}
 \section{Xamarin.Android}
@@ -41,6 +42,29 @@ System powinien spełniać następujące wymagania funkcjonalne. Przy definiowan
 \item Pracownik kina ma możliwość dokonania sprzedaży biletów klientom w kasie biletowej.
 \item Administrator systemu ma możliwość dodawania, modyfikowania i usuwania informacji o kinach należących do sieci kin.
 \item Administrator systemu ma możliwość tworzenia oraz modyfikacji kont użytkowników oraz przydzielania im ról.
+\item Użytkownik ma mieć możliwość stworzenia konta użytkownika na podstawie podanego adresu e-mail.
+\item Użytkownik ma mieć możliwość stworzenia konta użytkownika na podstawie istniejącego konta w portalu społecznościowym.
+\item Użytkownik ma mieć możliwość edycji danych konta użytkownika. (adres e-mail, hasło)
+\item Użytkownik ma mieć możliwość zresetowania zapomnianego hasła do konta użytkownika.
+\item Użytkownik ma mieć możliwość usunięcia konta użytkownika.
+\item Użytkownik ma mieć możliwość dokonania rezerwacji biletu(ów) na wybrany seans filmowy w wybranym kinie.
+\item Użytkownik ma mieć możliwość dokonania zakupu biletu(ów) na wybrany seans filmowy w wybranym kinie.
+\item Użytkownik ma mieć możliwość zapłaty za zakupione bilety poprzez zewnętrzny serwis obsługujący płatności elektroniczne.
+\item Użytkownik ma mieć możliwość przeglądania historii rezerwacji oraz historii zakupów.
+\item Użytkownik ma mieć możliwość przeglądania repertuaru wybranego kina.
+\item Użytkownik ma mieć możliwość przeglądania podstawowych informacji o wybranym filmie.
+\item Użytkownik ma mieć możliwość modyfikacji rezerwacji do 30 minut przed seansem.
+\item Użytkownik ma mieć możliwość anulowania rezerwacji do 30 minut przed seansem.
+\item Niepotwierdzone rezerwacje są automatycznie anulowane 30 minut przed seansem.
+\item Użytkownik ma mieć możliwość modyfikacji podstawowych danych dotyczących wybranego kina.
+\item Użytkownik ma mieć możliwość modyfikacji repertuaru obowiązującego w wybranym kinie.
+\item Użytkownik ma mieć możliwość podglądu podstawowych danych dotyczących wybranego kina.
+\item Użytkownik ma mieć możliwość podglądu widoku sali kinowej w celu wybrania interesującego go miejsca.
+\item Użytkownik ma mieć możliwość dokonania zakupu biletu(ów) bez potrzeby zakładania konta. (Informacje są przechowywane lokalnie na urządzeniu)
+\item Użytkownik ma mieć możliwość dokonania rezerwacji biletu(ów) bez potrzeby zakładania konta. (Informacje są przechowywane lokalnie na urządzeniu)
+\item Użytkownik ma mieć możliwość okazania biletu w formacie kodu QR.
+\item Użytkownik ma mieć możliwość okazania biletu pomimo braku połączenia z siecią Internet.
+\item Użytkownik ma mieć możliwość wybrania rodzaju biletu przy wybieraniu miejsca na sali kinowej.
 \end{enumerate}
 \section{Wymagania niefunkcjonalne}
 Zbiór tych wymagań definiuje, jakie wymagania na system mają zostać spełnione, oprócz wymagań funkcjonalnych. Wymagania te głównie dotyczą wydajności, bezpieczeństwa i tym podobnych aspektów.
@@ -69,15 +93,17 @@ Zbiór tych wymagań definiuje, jakie wymagania na system mają zostać spełnio
 \section{Implementacja wzorca CQRS}
 \section{Testy interfejsu aplikacji}
 \chapter{Podsumowanie}
-\chapter*{Bibliografia}
-\addcontentsline{toc}{chapter}{Bibliografia}
+\bibliographystyle{plain}
+\bibliography{./bib/bib} 
 \chapter*{Załączniki}
 \addcontentsline{toc}{chapter}{Załączniki}
 \section*{Spis tabel}
 \addcontentsline{toc}{section}{Spis tabel}
+\listoftables
 \section*{Spis rysunków}
 \addcontentsline{toc}{section}{Spis rysunków}
-\section*{Spis listingów}
+\listoffigures
+\lstlistoflistings
 \addcontentsline{toc}{section}{Spis listingów}
 \section*{Instrukcja kompilacji i testowego uruchomienia aplikacji}
 \addcontentsline{toc}{section}{Instrukcja kompilacji i testowego uruchomienia aplikacji}
