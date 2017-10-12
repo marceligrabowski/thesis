@@ -14,12 +14,14 @@
 \usepackage{graphicx}
 \usepackage{caption}
 \usepackage{subcaption}
-
+\usepackage[sorting=none,backend=biber,defernumbers]{biblatex}
 \usepackage{float}
 \usepackage{pdfpages}
-\usepackage{underscore}
+\usepackage[strings]{underscore}
 \usepackage{scrhack}
 \usepackage{tocbasic}
+\addbibresource{bib/bib.bib}
+\addbibresource{bib/net.bib}
 \setuptoc{lol}{leveldown}
 \graphicspath{ {img/} }
 \newcommand\todoin[2][]{\todo[inline, caption={2do}, #1]{
@@ -54,7 +56,7 @@
 \title{Wieloplatformowa aplikacja mobilna do zakupu biletów kinowych w technologii Xamarin}
 
 \begin{document}
-
+\nocite{*}
 \include{introduction}
 
 \include{main}

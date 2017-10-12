@@ -2,52 +2,76 @@
 \addcontentsline{toc}{chapter}{Wstęp}
 \chapter{Wprowadzenie do problematyki}
 \chapter{Technologie i narzędzia wykorzystywane w pracy}
+W poniższym rozdziale zostały opisane wybrane technologie oraz narzędzia deweloperskie, wspomagające zapewnienie jakości kodu, wykorzystywane w trakcie implementacji systemu.
 \section{Xamarin.Android}
+\label{sec:xamAnd}
+Xamarin.Android jest to platforma programistyczna stworzona z pomocą .NET Framework do tworzenia aplikacji na system operacyjny Android z wykorzystaniem natywnych metod SDK (\textit{Software Development Kit}) systemu Android. Z pomocą wyżej wymienionej platformy, aplikacje są tworzone w języku C\# (implementacja Xamarin.Android daje możliwość wykorzystywania specyficznych cech języka takich jak np. \textit{LINQ}). 
+
+Kod źródłowy w C\#, w celu uzyskania natywnej aplikacji, jest kompilowany do IL (\textit{Common Intermediate Language}) z wykorzystaniem kompilatora MonoVM. MonoVM jest kompilatorem typu JIT (\textit{just-in-time compiler}). Program jest kompilowany w trakcie wykonywania, przed wykonaniem  danego fragmentu kodu, do kodu maszynowego.\cite{Part1–Un34:online}
+Niewykorzystane klasy zawarte w frameworku są podczas kompilowania aplikacji usuwane z wykorzystaniem \textit{linkera}, w celu zmniejszenia rozmiaru aplikacji.\cite{Linkingo58:online}
+
+Aplikacja działa obok natywnych aplikacjami (napisanymi w językach Java/Kotlin) w ART (\textit{Android Runtime} - środowisko uruchomieniowe systemu Android). Interakcje z wykorzystaniem natywnych typów odbywają się z pomocą JNI (\textit{Java Native Interface})\cite{Part1–Un34:online}
+
 \section{Xamarin.iOS}
+\label{sec:xamiOS}
+Xamarin.iOS, podobnie jak Xamarin.Android, jest to platforma programistyczna stworzona z pomocą .NET Framework do tworzenia aplikacji na system operacyjny iOS. Wykorzystuje ona natywne metody SDK (\textit{Software Development Kit}) systemu iOS. Aplikacje są tworzone z wykorzystaniem języka C\#.
+
+Kod źródłowy jest kompilowany z użyciem kompilacji AOT (\textit{Ahead-Of-Time}) do języka assemblera dla procesorów ARM. Do kodu jest dołączony framework .NET, którego nieużywane klasy są usuwane przy pomocy \textit{linkera} w celu zmniejszenia rozmiaru aplikacji.\cite{Part1–Un34:online}\cite{Linkingo42:online}
+
+Jako, że firma Apple - twórca systemu iOS, nie pozwala na dynamiczne generowanie kodu w trakcie wykonywania programu, niektóre cechy języka C\# nie są dostępne dla twórcy aplikacji. (ograniczenia głównie dotyczą klas generycznych \cite{Limitati57:online} oraz mechanizmu refleksji \cite{Limitati74:online})
 \section{ASP.NET Core}
+\label{sec:aspCore}
 \section{Entity Framework Core}
+\label{sec:entityCore}
 \section{Dapper}
+\label{sec:dapper}
 \section{MVVMCross}
+\label{sec:mvvmCross}
+MVVMCross jest to framework wspomagający tworzenie aplikacji według wzorca projektowego Model-View-ViewModel. MVVMCross jest przygotowany specjalnie pod kątem platformy Xamarin 
 \section{AutoFac}
+\label{sec:autoFac}
 \section{Team Foundation Server}
+\label{sec:team}
 \section{HockeyApp}
+\label{sec:hockeyapp}
 \section{Microsoft Azure}
+\label{sec:azure}
 \chapter{Założenia projektowe}
+W tym rozdziale zostaną omówione założenia projektowe systemu. Pierwszy podrozdział jest poświęcony opisowi przedmiotu pracy. W podrozdziałach drugim oraz trzecim zostały opisane wymagania odpowiednio funkcjonalne i niefunkcjonalne na system. Ostatni podrozdział jest to opis zaprojektowanej architektury systemu.
 \section{Przedmiot pracy}
-Przedmiotem pracy jest utworzenie aplikacji mobilnej na platformy Android oraz iOS, umożliwiającej rezerwację i zakup biletów kinowych w ramach sieci kin, wraz z towarzyszącą aplikacją serwerową. Aplikacja kliencka będzie utworzona w oparciu o platformę Xamarin, natomiast aplikacja serwerowa w oparciu o framework ASP.NET Core
+Przedmiotem pracy jest utworzenie aplikacji mobilnej na platformy Android oraz iOS, umożliwiającej rezerwację i zakup biletów kinowych w ramach sieci kin, wraz z towarzyszącą aplikacją serwerową. Aplikacja kliencka będzie utworzona w oparciu o platformę Xamarin [\ref{sec:xamAnd}][\ref{sec:xamiOS}], natomiast aplikacja serwerowa w oparciu o framework ASP.NET Core [\ref{sec:aspCore}]
 \section{Wymagania funkcjonalne}
-System powinien spełniać następujące wymagania funkcjonalne. Przy definiowaniu wymagań przyjęto następujących aktorów - Klient, Pracownik kina, Administrator systemu, System
+System powinien spełniać następujące wymagania funkcjonalne. Przy definiowaniu wymagań przyjęto następujących aktorów - Klient, Pracownik kina, Administrator systemu, System 
 \begin{enumerate}
-\item Klient ma możliwość stworzenia konta użytkownika na podstawie adresu e-mail, w celu zachowania preferencji użytkownika pomiędzy urządzeniami.
-\item Klient ma możliwość stworzenia konta użytkownika z wykorzystaniem konta w jednym ze wspieranych portali społecznościowych (Facebook, Twitter, Google), w celu przyspieszenia procesu tworzenia konta.
-\item Klient ma możliwość modyfikacji informacji o koncie użytkownika.
-\item Klient ma możliwość zresetowania hasła do konta użytkownika, w celu odzyskania dostępu do konta. 
-\item Klient ma możliwość wyboru domyślnego kina, w celu łatwiejszego dostępu do aktualnego repertuaru.
-\item Klient ma możliwość przeglądania aktualnego repertuaru w danym kinie.
-\item Klient ma możliwość przeglądania podstawowych informacji o filmie z repertuaru. 
-\item Klient ma możliwość złożenia rezerwacji biletu(ów) na wybrany seans w wybranym kinie.
-\item Klient ma możliwość modyfikacji wybranej rezerwacji do 30 minut przed planowanym początkiem seansu.
+\item Jako Klient, chcę mieć możliwość stworzenia konta użytkownika na podstawie adresu e-mail, w celu zachowania preferencji użytkownika pomiędzy urządzeniami.
+\item Jako Klient, chcę mieć możliwość stworzenia konta użytkownika z wykorzystaniem konta w jednym ze wspieranych portali społecznościowych (Facebook, Twitter, Google), w celu przyspieszenia procesu tworzenia konta.
+\item Jako Klient, chcę mieć możliwość modyfikacji informacji o koncie użytkownika, w celu wygodnej aktualizacji danych.
+\item Jako Klient, chcę mieć możliwość zresetowania hasła do konta użytkownika, w celu odzyskania dostępu do konta. 
+\item Jako Klient, chcę mieć możliwość wyboru domyślnego kina, w celu łatwiejszego dostępu do aktualnego repertuaru.
+\item Jako Klient, chcę mieć możliwość przeglądania aktualnego repertuaru w danym kinie, w celu zapoznania się z ofertą kina.
+\item Jako Klient, chcę mieć możliwość przeglądania podstawowych informacji o filmie z repertuaru, w celu zapoznania się z krótkim opisem filmu. 
+\item Jako Klient, chcę mieć możliwość złożenia rezerwacji biletu(ów) na wybrany seans w wybranym kinie, w celu późniejszej finalizacji zamówienia przed seansem.
 \item System anuluje wszystkie niepotwierdzone rezerwacje 30 minut przed planowanym początkiem seansu. 
-\item Klient ma możliwość zakupu biletu(ów) na wybrany seans w wybranym kinie.
-\item Klient ma możliwość dokonania zapłaty za zakupione bilety za pośrednictwem zewnętrznego systemu płatności elektronicznych.
-\item Klient ma możliwość zwrotu zakupionych biletów do 3 godzin przed planowanym seansem.
-\item Klient ma możliwość wyboru miejsc na podstawie widoku sali kinowej.
-\item Klient ma możliwość wyboru rodzaju biletu przy wyborze miejsc.
-\item Klient ma możliwość przeglądania historii rezerwacji oraz zakupionych biletów.
-\item Klient ma możliwość dokonania zakupu biletu(ów) bez potrzeby zakładania konta.
-\item Klient ma możliwość dokonania rezerwacji biletu(ów) bez potrzeby zakładania konta. 
-\item Klient ma możliwość okazania biletu w formacie kodu QR.
-\item Klient ma możliwość okazania biletu pomimo braku połączenia z siecią Internet.\newline
-\item Pracownik kina ma możliwość modyfikacji podstawowych danych o kinie.
-\item Pracownik kina ma możliwość modyfikacji informacji o salach dostępnych w kinie.
-\item Pracownik kina ma możliwość modyfikacji repertuaru kina.
-\item Pracownik kina ma możliwość potwierdzenia rezerwacji klienta.
-\item Pracownik kina ma możliwość anulowania rezerwacji klienta.
-\item Pracownik kina ma możliwość dokonania sprzedaży biletów klientom w kasie biletowej.
-\item Administrator systemu ma możliwość dodawania, modyfikowania i usuwania informacji o kinach należących do sieci kin.
-\item Administrator systemu ma możliwość tworzenia oraz modyfikacji kont użytkowników oraz przydzielania im ról.
+\item Jako Klient, chcę mieć możliwość zakupu biletu(ów) na wybrany seans w wybranym kinie, w celu braku konieczności kupna biletu w kasie stacjonarnej przed seansem.
+\item Jako Klient, chcę mieć możliwość dokonania zapłaty za zakupione bilety za pośrednictwem zewnętrznego systemu płatności elektronicznych, w celu szybszej finalizacji zamówienia
+\item Jako Klient, chcę mieć możliwość zwrotu zakupionych biletów do 3 godzin przed planowanym seansem, w celu odzyskania pieniędzy za niewykorzystane bilety.
+\item Jako Klient, chcę mieć możliwość wyboru miejsc na podstawie widoku sali kinowej, w celu świadomego wyboru miejsca na sali kinowej.
+\item Jako Klient, chcę mieć możliwość wyboru rodzaju biletu przy wyborze miejsc, w celu wyboru odpowiedniego rodzaju biletu (np. ulgowego dla osoby niepełnoletniej).
+\item Jako Klient, chcę mieć możliwość przeglądania historii rezerwacji oraz zakupionych biletów, w celu   
+\item Jako Klient, chcę mieć możliwość dokonania zakupu biletu(ów) bez potrzeby zakładania konta, w celu szybkiego złożenia pojedynczego zamówienia.
+\item Jako Klient, chcę mieć możliwość dokonania rezerwacji biletu(ów) bez potrzeby zakładania konta, w celu szybkiego złożenia pojedynczej rezerwacji
+\item Jako Klient, chcę mieć możliwość okazania biletu w formacie kodu QR, w celu ułatwienia weryfikacji biletu przy wejściu na salę kinową.
+\item Jako Klient, chcę mieć możliwość okazania biletu pomimo braku połączenia z siecią Internet, w celu ograniczenia powszechnych problemów dotyczących połączenia internetowego przy okazywaniu biletu.\newline
+\item Jako Pracownik kina, chcę mieć możliwość modyfikacji podstawowych danych o kinie, w celu aktualizacji danych.
+\item Jako Pracownik kina, chcę mieć możliwość modyfikacji informacji o salach dostępnych w kinie, w celu aktualizacji ilości dostępnych miejsc na sali kinowej.
+\item Jako Pracownik kina, chcę mieć możliwość modyfikacji repertuaru kina, w celu aktualizacji oferty kina.
+\item Jako Pracownik kina, chcę mieć możliwość potwierdzenia rezerwacji klienta, w celu finalizacji zamówienia.
+\item Jako Pracownik kina, chcę mieć możliwość anulowania rezerwacji klienta, w celu zapewnienia większego wyboru miejsc dla pozostałych Klientów.
+\item Jako Pracownik kina, chcę mieć możliwość dokonania sprzedaży biletów klientom w kasie biletowej, w celu umożliwienia kupna biletów przez Klientów nie posiadających aplikacji.
+\item Jako Administrator systemu, chcę mieć możliwość dodawania, modyfikowania i usuwania informacji o kinach należących do sieci kin, w celu weryfikacji danych o kinach.
+\item Jako Administrator systemu, chcę mieć możliwość tworzenia oraz modyfikacji kont użytkowników oraz przydzielania im ról, w celu zarządzania dostępu użytkowników do systemu.
 \end{enumerate}
-Powyższa lista jest pełnym zbiorem wymagań, które powinny się znaleźć w ostatecznej wersji systemu. Prototyp systemu, będący celem pracy, będzie miał zaimplementowane wszystkie funkcjonalności dotyczące roli Klienta tj. wymagania od pierwszego do dwudziestego.
+Powyższa lista jest pełnym zbiorem wymagań, które powinny się znaleźć w ostatecznej wersji systemu. Prototyp systemu, będący celem pracy, będzie miał zaimplementowane wszystkie funkcjonalności dotyczące roli Klienta tj. wymagania od pierwszego do dziewiętnastego.
 \section{Wymagania niefunkcjonalne}
 Zbiór tych wymagań definiuje, jakie wymagania na system mają zostać spełnione, oprócz wymagań funkcjonalnych. Wymagania te głównie dotyczą wydajności, bezpieczeństwa i tym podobnych aspektów.
 \begin{enumerate}
@@ -98,8 +122,10 @@ Aplikacja serwerowa zbudowana będzie w oparciu o framework ASP.NET Core. Będzi
 \label{sec:cqrs}
 \section{Testy interfejsu aplikacji}
 \chapter{Podsumowanie}
-\bibliographystyle{plain}
-\bibliography{./bib/bib} 
+\printbibliography[nottype=misc, title={Bibliografia},resetnumbers=true,heading=bibintoc]
+\begin{refcontext}[labelprefix=L]
+\printbibliography[type=misc, title={Netografia},resetnumbers=true,heading=bibintoc]
+\end{refcontext}
 \chapter*{Załączniki}
 \addcontentsline{toc}{chapter}{Załączniki}
 \section*{Spis tabel}
