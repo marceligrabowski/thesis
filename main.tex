@@ -5,7 +5,7 @@
 W poniższym rozdziale zostały opisane wybrane technologie oraz narzędzia deweloperskie, wspomagające zapewnienie jakości kodu, wykorzystywane w trakcie implementacji systemu.
 \section{Xamarin.Android}
 \label{sec:xamAnd}
-Xamarin.Android jest to platforma programistyczna stworzona z pomocą .NET Framework do tworzenia aplikacji na system operacyjny Android z wykorzystaniem natywnych metod SDK (\textit{Software Development Kit}) systemu Android. Z pomocą wyżej wymienionej platformy, aplikacje są tworzone w języku C\# (implementacja Xamarin.Android daje możliwość wykorzystywania specyficznych cech języka takich jak np. \textit{LINQ}). 
+Xamarin.Android jest to platforma programistyczna, stworzona w oparciu o \textit{.NET Framework}, do tworzenia aplikacji na system operacyjny Android z wykorzystaniem natywnych metod SDK (\textit{Software Development Kit}) systemu Android. Z pomocą wyżej wymienionej platformy, aplikacje są tworzone w języku C\# , co w połączeniu z implementacją Xamarin.Android, daje możliwość wykorzystywania specyficznych cech języka takich jak np. \textit{LINQ}. 
 
 Kod źródłowy w C\#, w celu uzyskania natywnej aplikacji, jest kompilowany do IL (\textit{Common Intermediate Language}) z wykorzystaniem kompilatora MonoVM. MonoVM jest kompilatorem typu JIT (\textit{just-in-time compiler}). Program jest kompilowany w trakcie wykonywania, przed wykonaniem  danego fragmentu kodu, do kodu maszynowego.\cite{Part1–Un34:online}
 Niewykorzystane klasy zawarte w frameworku są podczas kompilowania aplikacji usuwane z wykorzystaniem \textit{linkera}, w celu zmniejszenia rozmiaru aplikacji.\cite{Linkingo58:online}
@@ -14,28 +14,68 @@ Aplikacja działa obok natywnych aplikacjami (napisanymi w językach Java/Kotlin
 
 \section{Xamarin.iOS}
 \label{sec:xamiOS}
-Xamarin.iOS, podobnie jak Xamarin.Android, jest to platforma programistyczna stworzona z pomocą .NET Framework do tworzenia aplikacji na system operacyjny iOS. Wykorzystuje ona natywne metody SDK (\textit{Software Development Kit}) systemu iOS. Aplikacje są tworzone z wykorzystaniem języka C\#.
+Xamarin.iOS, podobnie jak wspomniany w poprzednim podrozdziale Xamarin.Android, jest to platforma programistyczna, stworzona w oparciu o .NET Framework, do tworzenia aplikacji na system operacyjny iOS. Wykorzystuje ona natywne metody SDK (\textit{Software Development Kit}) systemu iOS. Aplikacje są tworzone z wykorzystaniem języka C\#.
 
 Kod źródłowy jest kompilowany z użyciem kompilacji AOT (\textit{Ahead-Of-Time}) do języka assemblera dla procesorów ARM. Do kodu jest dołączony framework .NET, którego nieużywane klasy są usuwane przy pomocy \textit{linkera} w celu zmniejszenia rozmiaru aplikacji.\cite{Part1–Un34:online}\cite{Linkingo42:online}
 
 Jako, że firma Apple - twórca systemu iOS, nie pozwala na dynamiczne generowanie kodu w trakcie wykonywania programu, niektóre cechy języka C\# nie są dostępne dla twórcy aplikacji. (ograniczenia głównie dotyczą klas generycznych \cite{Limitati57:online} oraz mechanizmu refleksji \cite{Limitati74:online})
 \section{ASP.NET Core}
 \label{sec:aspCore}
+ASP.NET Core jest to wieloplatformowy, otwarty framework, stworzony przez firmę Microsoft, służący do budowania nowoczesnych aplikacji internetowych. Umożliwia on między innymi budowanie aplikacji oraz serwisów internetowych czy też aplikacji działąjących na urządzeniach IoT \textit{Internet of Things}.
+
+Z racji wieloplatformowości, aplikacje mogą być tworzone oraz uruchamiane na systemach z rodziny Windows, Linux oraz macOS. Jako środowisko uruchomieniowe wykorzystywany jest .NET Framework (Windows) lub .NET Core (Windows/Linux/macOS) \cite{Introduc95:online}
+ 
+
 \section{Entity Framework Core}
 \label{sec:entityCore}
+Entity Framework (EF) Core jest to wieloplatformowy ORM (\textit{Object-Relational Mapper} - mapper obiektowo-relacyjny) zbudowany przez firmę Microsoft w oparciu o .NET Core, umożliwiający pracę z relacyjną bazą danych z wykorzystaniem natywnych obiektów ze środowiska .NET.
+
+EF Core prawie całkowicie eliminuje konieczność tworzenia ręcznie zapytań SQL do bazy danych. Można z niego korzystać z wieloma silnikami bazodanowymi np. \textit{Microsoft SQL Server}, \textit{Oracle}.
+
+Z wykorzystaniem EF Core, dostęp do danych odbywa się za pośrednictwem modelu. Model składa się z klas opisujących modele związków encji oraz kontekstu, który reprezentuje sesję połączenia z bazą danych, umożliwiając tworzenie zapytań oraz zapisywanie danych.
+
+EF Core umożliwia wygenerowanie modelu na podstawie istniejącej bazy danych (podejście \textit{Database-First}) lub wygenerowanie bazy danych na podstawie przygotowanego modelu z wykorzystaniem mechanizmu migracji (podejście \textit{Code-First})\cite{QuickOve99:online}
+
 \section{Dapper}
 \label{sec:dapper}
+Dapper jest to otwarty (\textit{open-source}) ORM (\textit{Object-Relational Mapper} - mapper obiektowo-relacyjny). Określa się go czasami również jako microORM, ze względu na brak wszystkich funkcjonalności charakteryzujących klasyczne ORM-y takie jak np. opisany w poprzednim podrozdziale Entity Framework Core [\ref{sec:entityCore}]. 
+
+Zaletą Dapper-a jest znacznie mniejszy narzut wydajnościowy, co można zauważyć przy odczycie danych. W porównaniu z Entity Framework, Dapper przy odczycie danych potrafi być ponad 10 razy szybszy (dane dla 500 operacji SELECT).
+
+Od strony technicznej Dapper jako biblioteką rozszerzającą interfejs \textit{IDbConnection} dostępny w ramach .NET Framework. Dzięki takiej implementacji, Dapper zapewnia podobną wydajność jak ręczne mapowanie danych z wykorzystaniem klasy \textit{SqlDataReader} \cite{StackExc69:online}  
 \section{MVVMCross}
 \label{sec:mvvmCross}
-MVVMCross jest to framework wspomagający tworzenie aplikacji według wzorca projektowego Model-View-ViewModel. MVVMCross jest przygotowany specjalnie pod kątem platformy Xamarin 
-\section{AutoFac}
-\label{sec:autoFac}
+MVVMCross jest to otwarty (\textit{open-source}) framework wspomagający tworzenie aplikacji według wzorca architektonicznego Model-View-ViewModel. MVVMCross jest przygotowany specjalnie pod kątem platformy Xamarin. Wspiera tworzenie aplikacji w technologiach Xamarin.Android, Xamarin.iOS, Xamarin Forms, Universal Windows Platform (UWP) oraz Windows Presentation Framework (WPF).
+
+Do głównych funkcjonalności MVVMCross należą: wsparcie dla wzorca MVVM, system nawigacji, \textit{data binding}, wsparcie dla specyficznych dla danej platformy funkcji, wbudowany system wstrzykiwania zależności \textit{Dependency Injection} oraz odwracania kontroli \textit{Inversion of Control}, system pluginów dla najczęściej wykorzystywanych funkcji oraz wsparcie dla testów jednostkowych. \cite{GettingS94:online}
+
+Dzięki wykorzystaniu MVVM Cross, można współdzielić nawet do 90\% kodu pomiędzy aplikacjami na różne platformy.
 \section{Team Foundation Server}
 \label{sec:team}
-\section{HockeyApp}
-\label{sec:hockeyapp}
+Team Foundation Server jest to system firmy Microsoft wspierający zarządzanie projektem informatycznym przez cały cykl życia oprogramowania.
+Do jego funkcjonalności zaliczamy:
+\begin{itemize}
+\item system kontroli wersji/repozytorium kodu (do wyboru Git lub Team Foundation Version Control)\cite{Kontrola99:online},
+\item wsparcie przy planowaniu prac w zespołach projektowych w zespołach korystających z metodyk zwinnych (Agile/Scrum) oraz modelu kaskadowego (\textit{waterfall})\cite{Narzedzi82:online},
+\item \textit{DevOps} - automatyzacja procesu wytwarzania oprogramowania w celu zapewnienia jakości - automatyczne budowanie aplikacji, uruchamianie testów, dostarczanie metryk dotyczących kodu (np. \textit{Code Coverage} - pokrycie kodu testami lub ocena długu technologicznego), automatyczne wdrażanie aplikacji, wsparcie dla wielu środowisk wdrożeniowych, system zarządzania wydaniami\cite{Ciaglain95:online}
+\item wsparcie dla wielu języków programowania oraz obsługa serwerów budujących z systemami Windows, Linux oraz macOS \cite{Buildand77:online}
+\item Integracja z zewnętrznymi narzędziami (np. środowiskami programistycznymi takimi jak np. Visual Studio lub Eclipse, platformami typu HockeyApp - więcej o HockeyApp w podrozdziale \ref{sec:hockeyapp})
+\end{itemize}
 \section{Microsoft Azure}
 \label{sec:azure}
+Microsoft Azure jest to usługa chmury obliczeniowej stworzona przez firmę Microsoft, służąca do tworzenia, testowania, wdrażania i zarządzania aplikacji oraz serwisów znajdujących się w centrach danych firmy Microsoft.
+
+Microsoft Azure udostępnia usługi w modelach IaaS (\textit{Infrastructure as a Service}), PaaS (\textit{Platform as a Service}) oraz SaaS (\textit{Service as a Service}). Wspiera różne języki programowania, narzędzia oraz frameworki, zarówno stworzone przez Microsoft jak i firm trzecich. 
+\newpage
+Do najpopularniejszych usług należą między innymi:
+\begin{itemize}
+\item maszyny wirtualne (IaaS) pozwalające na uruchomienie obrazów systemów Windows oraz Linux
+\item \textit{App Service} udostępniany jako usługa w modelu PaaS umożliwia hostowanie aplikacji internetowych oraz mobilnych stworzonych w różnych technologiach. Umożliwia integrację z instancją Team Foundation Server (podrozdział \ref{sec:team}) w ramach ciągłej integracji oraz ciągłego wdrażania.
+\item baza danych SQL działająca w technologii Microsoft SQL Server.
+\end{itemize}
+\section{HockeyApp}
+\label{sec:hockeyapp}
+
 \chapter{Założenia projektowe}
 W tym rozdziale zostaną omówione założenia projektowe systemu. Pierwszy podrozdział jest poświęcony opisowi przedmiotu pracy. W podrozdziałach drugim oraz trzecim zostały opisane wymagania odpowiednio funkcjonalne i niefunkcjonalne na system. Ostatni podrozdział jest to opis zaprojektowanej architektury systemu.
 \section{Przedmiot pracy}
@@ -57,7 +97,7 @@ System powinien spełniać następujące wymagania funkcjonalne. Przy definiowan
 \item Jako Klient, chcę mieć możliwość zwrotu zakupionych biletów do 3 godzin przed planowanym seansem, w celu odzyskania pieniędzy za niewykorzystane bilety.
 \item Jako Klient, chcę mieć możliwość wyboru miejsc na podstawie widoku sali kinowej, w celu świadomego wyboru miejsca na sali kinowej.
 \item Jako Klient, chcę mieć możliwość wyboru rodzaju biletu przy wyborze miejsc, w celu wyboru odpowiedniego rodzaju biletu (np. ulgowego dla osoby niepełnoletniej).
-\item Jako Klient, chcę mieć możliwość przeglądania historii rezerwacji oraz zakupionych biletów, w celu   
+\item Jako Klient, chcę mieć możliwość przeglądania historii rezerwacji oraz zakupionych biletów, w celu   zapoznania się z poprzednimi transakcjami.
 \item Jako Klient, chcę mieć możliwość dokonania zakupu biletu(ów) bez potrzeby zakładania konta, w celu szybkiego złożenia pojedynczego zamówienia.
 \item Jako Klient, chcę mieć możliwość dokonania rezerwacji biletu(ów) bez potrzeby zakładania konta, w celu szybkiego złożenia pojedynczej rezerwacji
 \item Jako Klient, chcę mieć możliwość okazania biletu w formacie kodu QR, w celu ułatwienia weryfikacji biletu przy wejściu na salę kinową.
