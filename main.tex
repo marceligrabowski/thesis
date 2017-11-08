@@ -7,16 +7,16 @@ W poniższym rozdziale zostały opisane wybrane technologie oraz narzędzia dewe
 \label{sec:xamAnd}
 Xamarin.Android jest to platforma programistyczna, stworzona w oparciu o \textit{.NET Framework}, do tworzenia aplikacji na system operacyjny Android z wykorzystaniem natywnych metod SDK (\textit{Software Development Kit}) systemu Android. Z pomocą wyżej wymienionej platformy, aplikacje są tworzone w języku C\# , co w połączeniu z implementacją Xamarin.Android, daje możliwość wykorzystywania specyficznych cech języka takich jak np. \textit{LINQ}. 
 
-Kod źródłowy w C\#, w celu uzyskania natywnej aplikacji, jest kompilowany do IL (\textit{Common Intermediate Language}) z wykorzystaniem kompilatora MonoVM. MonoVM jest kompilatorem typu JIT (\textit{just-in-time compiler}). Program jest kompilowany w trakcie wykonywania, przed wykonaniem  danego fragmentu kodu, do kodu maszynowego.\cite{Part1–Un34:online}
-Niewykorzystane klasy zawarte w frameworku są podczas kompilowania aplikacji usuwane z wykorzystaniem \textit{linkera}, w celu zmniejszenia rozmiaru aplikacji.\cite{Linkingo58:online}
+Kod źródłowy w C\#, w celu uzyskania natywnej aplikacji, jest kompilowany do IL (\textit{Common Intermediate Language}) z wykorzystaniem kompilatora MonoVM. MonoVM jest kompilatorem typu JIT (\textit{just-in-time compiler}). Program jest kompilowany w trakcie wykonywania, przed wykonaniem  danego fragmentu kodu, do kodu maszynowego.
+Niewykorzystane klasy zawarte w frameworku są podczas kompilowania aplikacji usuwane z wykorzystaniem \textit{linkera}, w celu zmniejszenia rozmiaru aplikacji.\cite{RefWorks:3} \cite{Part1–Un34:online} \cite{Linkingo58:online} 
 
-Aplikacja działa obok natywnych aplikacjami (napisanymi w językach Java/Kotlin) w ART (\textit{Android Runtime} - środowisko uruchomieniowe systemu Android). Interakcje z wykorzystaniem natywnych typów odbywają się z pomocą JNI (\textit{Java Native Interface})\cite{Part1–Un34:online}
+Aplikacja działa obok natywnych aplikacjami (napisanymi w językach Java/Kotlin) w ART (\textit{Android Runtime} - środowisko uruchomieniowe systemu Android). Interakcje z wykorzystaniem natywnych typów odbywają się z pomocą JNI (\textit{Java Native Interface}) \cite{Part1–Un34:online}
 
 \section{Xamarin.iOS}
 \label{sec:xamiOS}
 Xamarin.iOS, podobnie jak wspomniany w poprzednim podrozdziale Xamarin.Android, jest to platforma programistyczna, stworzona w oparciu o .NET Framework, do tworzenia aplikacji na system operacyjny iOS. Wykorzystuje ona natywne metody SDK (\textit{Software Development Kit}) systemu iOS. Aplikacje są tworzone z wykorzystaniem języka C\#.
 
-Kod źródłowy jest kompilowany z użyciem kompilacji AOT (\textit{Ahead-Of-Time}) do języka assemblera dla procesorów ARM. Do kodu jest dołączony framework .NET, którego nieużywane klasy są usuwane przy pomocy \textit{linkera} w celu zmniejszenia rozmiaru aplikacji.\cite{Part1–Un34:online}\cite{Linkingo42:online}
+Kod źródłowy jest kompilowany z użyciem kompilacji AOT (\textit{Ahead-Of-Time}) do języka assemblera dla procesorów ARM. Do kodu jest dołączony framework .NET, którego nieużywane klasy są usuwane przy pomocy \textit{linkera} w celu zmniejszenia rozmiaru aplikacji.\cite{RefWorks:4} \cite{Part1–Un34:online} \cite{Linkingo42:online}
 
 Jako, że firma Apple - twórca systemu iOS, nie pozwala na dynamiczne generowanie kodu w trakcie wykonywania programu, niektóre cechy języka C\# nie są dostępne dla twórcy aplikacji. (ograniczenia głównie dotyczą klas generycznych \cite{Limitati57:online} oraz mechanizmu refleksji \cite{Limitati74:online})
 \section{ASP.NET Core}
@@ -59,7 +59,7 @@ Do jego funkcjonalności zaliczamy:
 \item wsparcie przy planowaniu prac w zespołach projektowych w zespołach korystających z metodyk zwinnych (Agile/Scrum) oraz modelu kaskadowego (\textit{waterfall})\cite{Narzedzi82:online},
 \item \textit{DevOps} - automatyzacja procesu wytwarzania oprogramowania w celu zapewnienia jakości - automatyczne budowanie aplikacji, uruchamianie testów, dostarczanie metryk dotyczących kodu (np. \textit{Code Coverage} - pokrycie kodu testami lub ocena długu technologicznego), automatyczne wdrażanie aplikacji, wsparcie dla wielu środowisk wdrożeniowych, system zarządzania wydaniami\cite{Ciaglain95:online}
 \item wsparcie dla wielu języków programowania oraz obsługa serwerów budujących z systemami Windows, Linux oraz macOS \cite{Buildand77:online}
-\item Integracja z zewnętrznymi narzędziami (np. środowiskami programistycznymi takimi jak np. Visual Studio lub Eclipse, platformami typu HockeyApp - więcej o HockeyApp w podrozdziale \ref{sec:hockeyapp})
+\item Integracja z zewnętrznymi narzędziami: np. środowiskami programistycznymi (takimi jak np. Visual Studio lub Eclipse), platformami typu Visual Studio Mobile Center (więcej w podrozdziale \ref{sec:hockeyapp})
 \end{itemize}
 \section{Microsoft Azure}
 \label{sec:azure}
@@ -73,11 +73,18 @@ Do najpopularniejszych usług należą między innymi:
 \item \textit{App Service} udostępniany jako usługa w modelu PaaS umożliwia hostowanie aplikacji internetowych oraz mobilnych stworzonych w różnych technologiach. Umożliwia integrację z instancją Team Foundation Server (podrozdział \ref{sec:team}) w ramach ciągłej integracji oraz ciągłego wdrażania.
 \item baza danych SQL działająca w technologii Microsoft SQL Server.
 \end{itemize}
-\section{HockeyApp}
+\section{Visual Studio Mobile Center}
 \label{sec:hockeyapp}
-
+Visual Studio Mobile Center jest to platforma deweloperska działająca w chmurze stworzona przez firmę Microsoft. Do głównych usług oferowanych należą:
+\begin{itemize}
+\item po podpięciu repozytorium kodu z usługi Team Foundation Server - możliwość budowania aplikacji mobilnych,
+\item możliwość testowania aplikacji na podstawie testów interfejsu przygotowanych z wykorzystaniem różnych framework'ów (np. Xamarin UI Tests)
+\item możliwość dystrybucji aplikacji wśród zamkniętej grupy użytkowników (umożliwia prowadzenie zamkniętych testów aplikacji)
+\item gromadzenie informacji o błędach aplikacji
+\item gromadzenie statystyk użycia aplikacji - informacje o zachowaniach użytkowników, urządzeniach na których działa aplikacja, zdarzeniach w trakcie działania aplikacji
+\end{itemize}
 \chapter{Założenia projektowe}
-W tym rozdziale zostaną omówione założenia projektowe systemu. Pierwszy podrozdział jest poświęcony opisowi przedmiotu pracy. W podrozdziałach drugim oraz trzecim zostały opisane wymagania odpowiednio funkcjonalne i niefunkcjonalne na system. Ostatni podrozdział jest to opis zaprojektowanej architektury systemu.
+W tym rozdziale zostaną omówione założenia projektowe systemu. Pierwszy podrozdział jest poświęcony opisowi przedmiotu pracy. W podrozdziałach drugim oraz trzecim zostały opisane wymagania (odpowiednio funkcjonalne i niefunkcjonalne) na system. Ostatni podrozdział jest to opis zaprojektowanej architektury systemu.
 \section{Przedmiot pracy}
 Przedmiotem pracy jest utworzenie aplikacji mobilnej na platformy Android oraz iOS, umożliwiającej rezerwację i zakup biletów kinowych w ramach sieci kin, wraz z towarzyszącą aplikacją serwerową. Aplikacja kliencka będzie utworzona w oparciu o platformę Xamarin [\ref{sec:xamAnd}][\ref{sec:xamiOS}], natomiast aplikacja serwerowa w oparciu o framework ASP.NET Core [\ref{sec:aspCore}]
 \section{Wymagania funkcjonalne}
@@ -154,9 +161,45 @@ Aplikacja serwerowa zbudowana będzie w oparciu o framework ASP.NET Core. Będzi
 \section{Diagram klas}
 \addtocontents{toc}{\protect\newpage}
 \chapter{Implementacja}
+W tym rozdziale zostały opisane najważniejsze aspekty dotyczące fazy implementacji. Pierwszy podrozdział opisuje wykorzystanie metodyki DevOps w celu zapewnienia jakości produktu końcowego. W drugim podrozdziale zawarte jest rozwiązanie problemu autoryzacji użytkowników aplikacji mobilnej. W dalszej części znajdują się: opis rozwiązania synchronizacji danych w trybie offline, opis zastosowanych technik mających na celu zapewnienie bezpieczeństwa aplikacji, sposób i cel wykorzystania wzorca CQRS (\textit{Command Query Responsibility Segregation}) oraz opis przeprowadzonych testów interfejsu użytkownika.
 \section{DevOps}
+DevOps (\textit{development and operations}) jest to sposób wytwarzania oprogrmowania, mający na celu ścisłą współpracę pomiędzy osobami (programistami) odpowiedzialnymi za rozwój oprogramowania, a osobami specjalizującymi się w utrzymywaniu rozwiązań IT (administratorzy). Dzięki ścisłej współpracy grup osób odpowiedzialnych za rozwój (\textit{development}), eksploatację (\textit{operations}) oraz zapewnienie jakości (\textit{quality assurance}), DevOps znacznie skraca czas wdrożenia nowych funkcji w oprogramowaniu. Temat DevOps został po raz pierwszy zaprezentowany w 2009 roku przez Patricka Debois w trakcie pierwszej konferencji DevOps Days w Belgii. \cite{RefWorks:2}\cite{Czymjest19:online}
+
+Metoda DevOps jest obecnie wykorzystywana głównie przez firmy i organizacje, które wytwarzają i wdrażają dużą ilość zmian w swoim oprogramowaniu, działającym na środowiskach produkcyjnych przy zachowaniu jak najkrótszego czasu potrzebnego na wdrożenie oraz wysokiej jakości oprogramowania. \cite{Devopsco42:online}
+
+Pojęcie DevOps jest ściśle powiązane z procesami takimi jak:
+\begin{itemize}
+\item Continuous Integration (ciągła integracja),
+\item Continuous Delivery (ciągłe dostarczanie),
+\item Continuous Testing (ciągłe testowanie),
+\item Continuous Monitoring (ciągły monitoring) oraz
+\item Continuous Deployment (ciągłe wdrażanie)
+\end{itemize}
+\newpage
+Definiują one w klarowny sposób jakie procesy są realizowane w ramach metodyki DevOps. Innymi słowy, DevOps można przedstawić jako pewien rodzaj dyscypliny w budowie oraz weryfikacji wytwarzanego oprogramowania, za pośrednictwem testów regresji oraz statycznej analizy kodu zawartego w systemie kontroli wersji (pokrycie kodu testami, ocena długu technologicznego). To podejście jest jedną z najbardziej zwinnych praktyk rozwoju oprogramowania. Umożliwia opracowanie rozwiązań wysokiej jakości, zapewniając aktualną informację zwrotną na temat wad wytworzonego kodu. \cite{Devopsco42:online}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\textwidth]{img2}
+\caption{Wizualizacja procesu wytwarzania oprogramowania w ramach metodyki DevOps}
+\end{figure}
+
+W procesie wytwarzania opisywanego systemu została wykorzystana opisana wyżej metodyka, w celu zapewnienia jakości oprogramowania. Do planowania prac został wykorzystany system Team Foundation Server wspierający podejście zwinne (\textit{Agile}) do prowadzenia projektu. (opisany w podrozdziale \ref{sec:team}). Zadania były definiowane jako historyjki użytkownika powstałe podczas tworzenia wymagań funkcjonalnych. Do każdego takiego zadania tworzono podzadania (ang. \textit{subtasks}) opisujące techniczne aspekty uzyskania danej funkcjonalności. W późniejszym etapie funkcjonowania systemu, TFS może być wykorzystywany do przechowywania informacji o zgłoszonych przez użytkowników (testerów oraz użytkowników końcowych) błędach oraz propozycjach zmian.
+
+W kroku implementacji rozwiązania wykorzystano repozytoria systemu kontroli wersji Git, którego obsługę wbudowano w Team Foundation Server. W ramach projektu utworzono dwa repozytoria. Osobne dla aplikacji serwerowej oraz mobilnej. W ramach pracy nad konkretnymi funkcjonalnościami, wykorzystano mechanizmy oferowane przez wyżej wymieniony system kontroli wersji  m.in.: \textit{feature branches}, \textit{pull requests}. Ma to bardzo duże znaczenie w przypadku projektów zespołowych, pozwalajac na bezproblemowy, równoległy rozwój oprogramowania.
+
+W następnym kroku następuje budowanie rozwiązania w ramach ciągłej integracji. Po wykonaniu zmian w repozytorium kodu (w głównej gałęzi - w branchu master) następuje automatyczne budowanie projektów na serwerze budującym działającym w chmurze Microsoft Azure jako maszyna wirtualna, opartym o system Windows Server 2016. Serwer budujący jest zintegrowany z systemem Team Foundation Server co umożliwia łatwe tworzenie definicji budowania. 
+
+Po pomyślnie ukończonym procesie budowania rozwiązania, uruchamiane są testy jednostkowe oraz statyczna analiza kodu z wykorzystaniem NDepend. Dzięki temu natychmiast uzyskujemy statystyki dotyczące pokrycia kodu testami (ang. \textit{code coverage}) oraz prognozowanego długu technologicznego (ang. \textit{technical debt}).
+
+W następnym kroku udostępniane są artefakty powstałe podczas procesu budowania oraz:
+\begin{itemize}
+\item w przypadku aplikacji serwerowej następuje wdrożenie aplikacji na środowisko deweloperskie utworzone w usłudze Microsoft Azure - po ukończeniu testów na środowisku deweloperskim, po ręcznym zaakceptowaniu przez uprawnionego użytkownika, następuje wdrożenie na środowiska \textit{staging} oraz produkcyjne
+\item w przypadku aplikacji mobilnej następuje dystrybucja aplikacji do testerów w ramach systemu Visual Studio Mobile Center jako wersja alpha (więcej o VS Mobile Center w podrozdziale \ref{sec:hockeyapp}) - po ukończeniu testów wersji alpha, po ręcznym zaakceptowaniu przez uprawnionego użytkownika, następuje dystrbucja aplikacji w wersji beta dla szerszego grona testerów oraz wersji produkcyjnej do internetowych sklepów takich jak Google Play Store oraz Apple App Store
+\end{itemize}
+
+Do zbierania telemetrii aplikacji zastosowano usługi: Azure Application Insights dla aplikacji serwerowej oraz Visual Studio Mobile Center dla aplikacji mobilnych. Dzięki wyżej wymienionym usługom, mamy dostęp do wielu statystyk takich jak np.: średni czas odpowiedzi serwera, ilość żądań HTTP, czas uruchamiania aplikacji, statystyki dotyczące urządzeń korzystających z aplikacji, dane dotyczące wyjątków, które wystąpiły w trakcie działania aplikacji. Dzięki integracji z Team Foundation Server jest możliwe automatyczne tworzenie zgłoszeń o błędach w aplikacji na podstawie wystepujących wyjątków.
 \section{Autoryzacja użytkowników aplikacji}
-\section{Synchronizacja danych offline-online}
 \section{Bezpieczeństwo aplikacji}
 \section{Implementacja wzorca CQRS}
 \label{sec:cqrs}
