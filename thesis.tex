@@ -1,13 +1,19 @@
-\documentclass[12pt,a4paper]{report}
+ \documentclass[12pt,a4paper]{report}
 \usepackage[english, polish]{babel}
 \usepackage{polski}
 \frenchspacing
+\usepackage{tabularx}
 \usepackage{indentfirst}
 \usepackage{xltxtra}
 \usepackage{titlesec}
 \usepackage{listings}
-\usepackage[margin=25mm]{geometry}
-\linespread{1.3}
+\usepackage{subcaption}
+\usepackage{color}
+\definecolor{bluekeywords}{rgb}{0.13,0.13,1}
+\definecolor{greencomments}{rgb}{0,0.5,0}
+\definecolor{redstrings}{rgb}{0.9,0,0}
+\usepackage[margin=25mm,lmargin=30mm,rmargin=20mm]{geometry}
+\usepackage{scrpage2}
 \usepackage{nameref}
 \usepackage[pdfauthor={Marceli Grabowski}, pdftitle={Wieloplatformowa aplikacja mobilna do zakupu biletów kinowych w technologii Xamarin}]{hyperref}
 \usepackage[nottoc,notlot,notlof]{tocbibind}
@@ -31,6 +37,25 @@
 \titleformat*{\section}{\fontsize{14pt}{2}\bfseries}
 \titleformat*{\subsection}{\fontsize{13pt}{2}\bfseries}
 \titleformat*{\subsubsection}{\fontsize{13pt}{2}\bfseries}
+
+\lstset{language=[Sharp]C,
+  showspaces=false,
+  showtabs=false,
+  breaklines=true,
+  showstringspaces=false,
+  breakatwhitespace=true,
+  escapeinside={(*@}{@*)},
+  commentstyle=\color{greencomments},
+  keywordstyle=\color{bluekeywords},
+  stringstyle=\color{redstrings},
+  basicstyle=\ttfamily
+}
+
+\ifoot[]{}
+\cfoot[]{}
+\ofoot[\pagemark]{\pagemark}
+
+\pagestyle{scrplain}
 
 \makeatletter
 \renewcommand\listoftables{%
@@ -57,6 +82,9 @@
 \title{Wieloplatformowa aplikacja mobilna do zakupu biletów kinowych w technologii Xamarin}
 
 \begin{document}
+\linespread{1.3}
+\selectfont
+
 \include{introduction}
 
 \include{main}
